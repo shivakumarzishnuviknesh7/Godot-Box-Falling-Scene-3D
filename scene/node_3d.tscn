@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://be0fwp0011cnc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jmlug"]
+size = Vector3(1, 1.50684, 0.922852)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wvhhb"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ugsrq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fmn2b"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, -1)
+fov = 84.0698
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.64101, 2.85457, 1.1829)
+
+[node name="box" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="box"]
+transform = Transform3D(1.04801, 0, 0, 0, 0.66923, 0, 0, 0, 0.797056, 0.264, -0.147, -6.223)
+shape = SubResource("BoxShape3D_jmlug")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.264177, -0.0912106, -6.27785)
+mesh = SubResource("BoxMesh_wvhhb")
+skeleton = NodePath("../../Camera3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(3.57192, 0, 0, 0, 0.334215, 0, 0, 0, 7.49765, 0.336103, -1.68481, -6.04398)
+mesh = SubResource("CylinderMesh_ugsrq")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(3.5663, 0, 0, 0, 0.333689, 0, 0, 0, 7.48586, 0.336103, -1.68481, -6.04398)
+shape = SubResource("CylinderShape3D_fmn2b")
